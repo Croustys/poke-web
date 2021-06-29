@@ -35,7 +35,6 @@ function App() {
           />
         </Form>
         <SearchButton onClick={handleSearch}>Search</SearchButton>
-        <button onClick={change}>HEHE</button>
         {pokemon && <PokeCard {...pokemon!} />}
       </div>
     </DivApp>
