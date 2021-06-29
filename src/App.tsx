@@ -20,9 +20,6 @@ function App() {
     const data = await fetchPokemon(search!);
     setPokemon(data);
   }
-  function change() {
-    alert("HEHE");
-  }
   return (
     <DivApp>
       <div>
