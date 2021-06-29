@@ -30,7 +30,7 @@ function App() {
           <Label>Enter a pokemon's name</Label>
           <Input
             type="text"
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => setSearch(e.target.value.toLowerCase())}
             onKeyPress={(e) => handleEnter(e)}
           />
         </Form>
