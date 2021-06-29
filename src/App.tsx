@@ -20,6 +20,9 @@ function App() {
     const data = await fetchPokemon(search!);
     setPokemon(data);
   }
+  function change() {
+    alert("HEHE");
+  }
   return (
     <DivApp>
       <div>
@@ -32,6 +35,7 @@ function App() {
           />
         </Form>
         <SearchButton onClick={handleSearch}>Search</SearchButton>
+        <button onClick={change}>HEHE</button>
         {pokemon && <PokeCard {...pokemon!} />}
       </div>
     </DivApp>
