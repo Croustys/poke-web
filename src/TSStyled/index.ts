@@ -67,11 +67,15 @@ export const DivTableBody = styled('div')`
   display: table-row-group;
 `;
 export const SearchButton = styled('button')`
-  width: 40%;
-  background: lightblue;
+  width: 20%;
+  height: 5vh;
+  background: #5959f0;
   border-radius: 5px;
   color: white;
   border: none;
   margin-bottom: 10px;
   outline: none;
+  &:hover {
+    cursor: pointer;
+  }
 `;

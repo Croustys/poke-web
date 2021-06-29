@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { MobileView } from "react-device-detect";
 import "./App.css";
 import { fetchPokemon } from "./api";
 import { IPokemon } from "./interfaces/interfaces";
@@ -14,7 +13,7 @@ function App() {
   async function handleEnter(e: React.KeyboardEvent<HTMLInputElement>) {
     if (e.key === "Enter") {
       e.preventDefault();
-      handleSearch()
+      handleSearch();
     }
   }
   async function handleSearch() {
@@ -31,10 +30,8 @@ function App() {
             onChange={(e) => setSearch(e.target.value)}
             onKeyPress={(e) => handleEnter(e)}
           />
-          <MobileView>
-            <SearchButton onClick={handleSearch}>Search</SearchButton>
-          </MobileView>
         </Form>
+        <SearchButton onClick={handleSearch}>Search</SearchButton>
         {pokemon && <PokeCard {...pokemon!} />}
       </div>
     </DivApp>
