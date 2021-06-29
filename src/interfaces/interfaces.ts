@@ -1,4 +1,3 @@
-export interface IPokeApiResp {}
 export interface IPokemon {
   abilities: IAbility[];
   base_experience: number;
@@ -28,7 +27,16 @@ export interface IPokemon {
     front_shiny_female: string;
   };
   stats: any[];
-  types: any[];
+  types: IType[];
+  weight: number;
+}
+interface ISubType {
+  name: string;
+  url: string;
+}
+interface IType {
+  slot: number;
+  type: ISubType;
 }
 interface IMoves {
   move: {

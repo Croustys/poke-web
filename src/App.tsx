@@ -1,22 +1,33 @@
-import React, { useEffect, ReactElement } from "react";
+import {  useState } from "react";
 import "./App.css";
-import { fetchDefault } from "./api";
-import { styled } from "tsstyled";
+import {  fetchPokemon } from "./api";
+import { IPokemon } from "./interfaces/interfaces";
+import PokeCard from "./components/PokeCard";
+
+import {DivApp, Form, Input, Label} from "./TSStyled"
 
 function App() {
-  useEffect(() => {
-    fetchDefault();
-  }, []);
+  const [search, setSearch] = useState<string>();
+  const [pokemon, setPokemon] = useState<IPokemon | null>(null);
+
+  async function handleEnter(e: React.KeyboardEvent<HTMLInputElement>) {
+    if(e.key === "Enter") {
+      e.preventDefault();
+      const data = await fetchPokemon(search!);
+      console.log(data)
+      setPokemon(data);
+    }
+  }
   return (
-    <div className="App">
-      <StyledBase />
-    </div>
+    <DivApp>
+      <div>
+        <Form>
+          <Label>Enter a pokemon's name</Label>
+          <Input type="text" onChange={e => setSearch(e.target.value)} onKeyPress={(e) => handleEnter(e)} />
+        </Form>
+        {pokemon && <PokeCard {...pokemon!} />}
+      </div>
+    </DivApp>
   );
 }
-const Base = (props: { className?: string }): ReactElement => {
-  return <div className={props.className}>Foo</div>;
-};
-const StyledBase = styled(Base)`
-  color: red;
-`;
 export default App;

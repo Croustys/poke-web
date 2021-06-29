@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IPokeApiResp, IPokemon } from "../interfaces/interfaces";
+import { IPokemon } from "../interfaces/interfaces";
 
 const URL = `https://pokeapi.co/api/v2/pokemon/`;
 export async function fetchDefault(): Promise<void> {
@@ -11,4 +11,8 @@ export async function fetchDefault(): Promise<void> {
     console.log(r.data);
     pokeDatas.push(r.data as IPokemon);
   }
+}
+export async function fetchPokemon(name: string): Promise<IPokemon> {
+  const resp = await axios.get(`${URL}${name}`);
+  return await resp.data;
 }
